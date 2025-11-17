@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redirecting...</title>
+    <script>
+        // Detect browser language and redirect
+        (function() {
+            const browserLang = navigator.language || navigator.userLanguage || 'en';
+            const primaryLang = browserLang.split('-')[0];
+
+            // Check if French or English is supported
+            if (primaryLang === 'fr') {
+                window.location.href = 'catalogue-fr.html';
+            } else {
+                window.location.href = 'catalogue-en.html';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #666;">
+        <div>
+            <h1>Detecting language...</h1>
+            <p>This should redirect automatically.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,209 +1,848 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Catalogue d'Applications - AltStore PAL</title>
+    <title>Applications Catalog - AltStore PAL</title>
+    <meta name="description" content="Multi-Platform Mobile Applications Catalog for AltStore PAL">
+    <meta name="keywords" content="AltStore PAL, mobile applications, iOS, EduLift, apps catalog">
+
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #4ade80;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-light: #999;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --border-light: #e9ecef;
+            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --shadow-large: 0 20px 40px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
         }
+
+        /* Header */
         .header {
             text-align: center;
             color: white;
             margin-bottom: 40px;
+            padding: 40px 20px;
         }
+
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.6s ease-out;
         }
+
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.95;
+            margin-bottom: 10px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
         }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 8px 16px;
+            margin: 20px auto 0;
+            display: inline-flex;
+            gap: 10px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .language-btn.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Priority Badges */
+        .priority-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .priority-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .priority-badge.recommended {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Sources Grid */
         .sources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
+
+        /* Priority-based sizing */
+        .source-card.production {
+            grid-column: span 1;
+        }
+
+        .source-card.beta {
+            grid-column: span 1;
+        }
+
+        .source-card.internal {
+            grid-column: span 1;
+            opacity: 0.85;
+        }
+
+        /* Source Cards */
         .source-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
+
+        .source-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+        }
+
         .source-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
         }
-        .source-card.beta::before { background: #FF9500; }
-        .source-card.production::before { background: #2E86C1; }
-        .source-card.internal::before { background: #34C759; }
 
-        .source-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        .source-card.production::before {
+            background: linear-gradient(90deg, #10b981, #059669);
+            height: 5px; /* More prominent */
         }
+        .source-card.beta::before {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+        .source-card.internal::before {
+            background: linear-gradient(90deg, #6366f1, #4f46e5);
+        opacity: 0.7; /* Less prominent */
+        }
+
+        /* Priority Indicator */
+        .priority-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .source-card.production .priority-indicator {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .source-card.beta .priority-indicator {
+            background: #ff9500;
+            color: white;
+        }
+
+        .source-card.internal .priority-indicator {
+            background: #6366f1;
+            color: white;
+        }
+
+        /* Source Header */
         .source-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
         .source-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-right: 15px;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 12px;
+            flex-shrink: 0;
         }
-        .beta .source-icon { background: #fff3cd; color: #FF9500; }
-        .production .source-icon { background: #e3f2fd; color: #2E86C1; }
-        .internal .source-icon { background: #e8f5e8; color: #34C759; }
+
+        .production .source-icon {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        .beta .source-icon {
+            background: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+        }
+        .internal .source-icon {
+            background: rgba(99, 102, 241, 0.1);
+            color: #4f46e5;
+        }
+
+        .source-title-section {
+            flex: 1;
+        }
 
         .source-title {
             font-size: 1.3rem;
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
+            margin-bottom: 5px;
         }
-        .source-description {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .source-url {
-            background: #f5f5f5;
-            padding: 10px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
+
+        .source-subtitle {
             font-size: 0.9rem;
-            word-break: break-all;
-            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
+
+        /* Source Content */
+        .source-content {
+            flex: 1;
+            margin-bottom: 25px;
+        }
+
+        .source-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .source-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .source-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .source-features li::before {
+            content: '✓';
+            color: var(--accent-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        /* Source URL */
+        .source-url {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        /* Source Action */
+        .source-action {
+            margin-top: auto;
+        }
+
         .add-source-btn {
             display: inline-block;
-            background: #007AFF;
-            color: white;
-            padding: 12px 20px;
+            width: 100%;
+            padding: 14px 20px;
             border-radius: 8px;
+            text-align: center;
             text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s ease;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
+
+        .source-card.production .add-source-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .source-card.beta .add-source-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .source-card.internal .add-source-btn {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+        }
+
         .add-source-btn:hover {
-            background: #0056CC;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+
+        /* Instructions */
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .instructions h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .instructions ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .instructions li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .instructions li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--accent-color);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .instructions .note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            font-style: italic;
+            padding-left: 25px;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
             color: white;
             opacity: 0.8;
-            margin-top: 40px;
+            padding: 30px 20px;
         }
-        .instructions {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
             color: white;
+            padding: 40px;
+            font-size: 1.2rem;
         }
-        .instructions h3 {
-            margin-bottom: 10px;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .priority-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .source-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .source-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .header {
+                padding: 30px 15px;
+            }
+
+            .section-header {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
         }
-        .instructions ol {
-            margin-left: 20px;
-            line-height: 1.6;
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            .source-card {
+                padding: 25px 20px;
+            }
+
+            .header {
+                padding: 25px 10px;
+            }
+
+            .instructions {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="loading" id="loading">
+        Loading catalogue...
+    </div>
+
+    <div class="container" id="catalogue" style="display: none;">
+        <!-- Header -->
         <div class="header">
-            <h1>📱 Catalogue AltStore PAL</h1>
-            <p>Applications mobiles disponibles pour AltStore PAL</p>
-        </div>
-
-        <div class="instructions">
-            <h3>🔧 Comment installer une application :</h3>
-            <ol>
-                <li>Ouvrez AltStore PAL sur votre iPhone</li>
-                <li>Copiez l'URL de la source souhaitée ci-dessous</li>
-                <li>Ajoutez la source dans AltStore PAL</li>
-                <li>Installez l'application depuis la source</li>
-            </ol>
-        </div>
-
-        <div class="sources-grid">
-            <div class="source-card beta">
-                <div class="source-header">
-                    <div class="source-icon">🧪</div>
-                    <div class="source-title">Applications Bêta</div>
-                </div>
-                <div class="source-description">
-                    Versions en cours de développement. Instable mais avec les dernières fonctionnalités.
-                </div>
-                <div class="source-url">
-                    https://jrevillard.github.io/my-altstore/sources/beta.json
-                </div>
-                <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/beta.json" class="add-source-btn">
-                    Ajouter cette source
-                </a>
+            <h1 id="title">Applications Catalog</h1>
+            <p id="subtitle">Multi-Platform Mobile Applications</p>
+            <div class="language-selector" id="languageSelector">
+                <button class="language-btn active" data-lang="fr">Français</button>
+                <button class="language-btn" data-lang="en">English</button>
             </div>
+        </div>
 
-            <div class="source-card production">
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2 id="chooseSource">Choose your application source</h2>
+            <p id="chooseSourceDesc">Different sources for different use cases</p>
+        </div>
+
+        <!-- Priority Badges -->
+        <div class="priority-badges" id="priorityBadges">
+            <div class="priority-badge recommended" data-priority="high" id="priorityRecommended">
+                <span class="badge-text">Recommended</span>
+            </div>
+            <div class="priority-badge" data-priority="medium" id="priorityBeta">
+                <span class="badge-text">Testing</span>
+            </div>
+            <div class="priority-badge" data-priority="low" id="priorityInternal">
+                <span class="badge-text">Internal</span>
+            </div>
+        </div>
+
+        <!-- Sources Grid -->
+        <div class="sources-grid" id="sourcesGrid">
+            <!-- Production Apps -->
+            <div class="source-card production" data-environment="production">
+                <div class="priority-indicator">
+                    <span class="badge-text" id="priorityProduction">Recommended</span>
+                </div>
                 <div class="source-header">
                     <div class="source-icon">✅</div>
-                    <div class="source-title">Applications Officielles</div>
+                    <div class="source-title-section">
+                        <h3 class="source-title" id="productionTitle">Official Applications</h3>
+                        <div class="source-subtitle" id="productionSubtitle">Stable and approved versions</div>
+                    </div>
                 </div>
-                <div class="source-description">
-                    Versions stables et testées. Pour usage en production.
+                <div class="source-content">
+                    <p class="source-description" id="productionDescription">
+                        Tested and validated applications for production use. Stable and reliable versions.
+                    </p>
+                    <ul class="source-features" id="productionFeatures">
+                        <li>Stable versions</li>
+                        <li>Official support</li>
+                        <li>Tested and validated</li>
+                        <li>Controlled updates</li>
+                    </ul>
                 </div>
-                <div class="source-url">
+                <div class="source-url" id="productionUrl">
                     https://jrevillard.github.io/my-altstore/sources/production.json
                 </div>
-                <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/production.json" class="add-source-btn">
-                    Ajouter cette source
-                </a>
+                <div class="source-action">
+                    <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/production.json"
+                       class="add-source-btn"
+                       id="productionBtn">
+                        Add this source
+                    </a>
+                </div>
             </div>
 
-            <div class="source-card internal">
+            <!-- Beta Apps -->
+            <div class="source-card beta" data-environment="beta">
+                <div class="priority-indicator">
+                    <span class="badge-text" id="priorityBetaText">Testing</span>
+                </div>
+                <div class="source-header">
+                    <div class="source-icon">🧪</div>
+                    <div class="source-title-section">
+                        <h3 class="source-title" id="betaTitle">Beta Applications</h3>
+                        <div class="source-subtitle" id="betaSubtitle">Latest features in testing</div>
+                    </div>
+                </div>
+                <div class="source-content">
+                    <p class="source-description" id="betaDescription">
+                        Experimental versions with the latest features. Unstable but innovative.
+                    </p>
+                    <ul class="source-features" id="betaFeatures">
+                        <li>Latest features</li>
+                        <li>Experimental versions</li>
+                        <li>Feedback welcome</li>
+                        <li>Frequent updates</li>
+                    </ul>
+                </div>
+                <div class="source-url" id="betaUrl">
+                    https://jrevillard.github.io/my-altstore/sources/beta.json
+                </div>
+                <div class="source-action">
+                    <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/beta.json"
+                       class="add-source-btn"
+                       id="betaBtn">
+                        Add this source
+                    </a>
+                </div>
+            </div>
+
+            <!-- Internal Apps -->
+            <div class="source-card internal" data-environment="internal">
+                <div class="priority-indicator">
+                    <span class="badge-text" id="priorityInternalText">Internal</span>
+                </div>
                 <div class="source-header">
                     <div class="source-icon">👥</div>
-                    <div class="source-title">Applications Internes</div>
+                    <div class="source-title-section">
+                        <h3 class="source-title" id="internalTitle">Internal Applications</h3>
+                        <div class="source-subtitle" id="internalSubtitle">Complete access to all versions</div>
+                    </div>
                 </div>
-                <div class="source-description">
-                    Accès complet à toutes les versions. Réservé à l'équipe et aux testeurs internes.
+                <div class="source-content">
+                    <p class="source-description" id="internalDescription">
+                        Complete collection for the internal team. Access to all versions and development environments.
+                    </p>
+                    <ul class="source-features" id="internalFeatures">
+                        <li>Complete access</li>
+                        <li>Development versions</li>
+                        <li>Test environments</li>
+                        <li>Experimental builds</li>
+                    </ul>
                 </div>
-                <div class="source-url">
+                <div class="source-url" id="internalUrl">
                     https://jrevillard.github.io/my-altstore/sources/internal.json
                 </div>
-                <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/internal.json" class="add-source-btn">
-                    Ajouter cette source
-                </a>
+                <div class="source-action">
+                    <a href="altstore://sources?url=https://jrevillard.github.io/my-altstore/sources/internal.json"
+                       class="add-source-btn"
+                       id="internalBtn">
+                        Add this source (restricted)
+                    </a>
+                </div>
             </div>
         </div>
 
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3 id="instructionsTitle">🔧 How to Install</h3>
+            <ol id="instructionsSteps">
+                <li data-step="1" id="step1">Open AltStore PAL on your iPhone</li>
+                <li data-step="2" id="step2">Copy the URL of the desired source below</li>
+                <li data-step="3" id="step3">Add the source in AltStore PAL (Sources tab)</li>
+                <li data-step="4" id="step4">Install applications from the source</li>
+            </ol>
+            <p class="note" id="instructionsNote">
+                Applications require AltStore PAL (available on App Store in EU)
+            </p>
+        </div>
+
+        <!-- Footer -->
         <div class="footer">
-            <p>🚀 Propulsé par <strong>AltStore PAL</strong> • Géré par l'équipe EduLift</p>
+            <p><span id="footerPowered">Powered by</span> <span id="footerAltStore">AltStore PAL</span></p>
+            <p><span id="footerManaged">Managed by</span> <span id="footerTeam">the team</span></p>
         </div>
     </div>
+
+    <script src="i18n-data.js"></script>
+    <script>
+        // Initialize page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCatalogue();
+        });
+
+        function initializeCatalogue() {
+            // Set language from browser or default
+            const language = getBrowserLanguage();
+
+            // Update language selector buttons
+            updateLanguageButtons(language);
+
+            // Update all text content
+            updateAllText(language);
+
+            // Set up language switching
+            setupLanguageSwitching();
+
+            // Hide loading and show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('catalogue').style.display = 'block';
+
+            // Update page metadata
+            updatePageMetadata(language);
+        }
+
+        function getBrowserLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage || 'en';
+            const primaryLang = browserLang.split('-')[0];
+
+            return i18n[primaryLang] ? primaryLang : 'en';
+        }
+
+        function updateLanguageButtons(currentLang) {
+            const buttons = document.querySelectorAll('.language-btn');
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+        }
+
+        function updateAllText(language) {
+            // Update page title and meta
+            document.title = t('meta.title');
+
+            // Header
+            document.getElementById('title').textContent = t('title');
+            document.getElementById('subtitle').textContent = t('subtitle');
+
+            // Section header
+            document.getElementById('chooseSource').textContent = t('chooseSource');
+            document.getElementById('chooseSourceDesc').textContent = t('chooseSourceDesc');
+
+            // Priority badges
+            document.getElementById('priorityRecommended').innerHTML = `<span class="badge-text">${t('recommended')}</span>`;
+            document.getElementById('priorityBeta').innerHTML = `<span class="badge-text">${t('priority')}: Testing</span>`;
+            document.getElementById('priorityInternal').innerHTML = `<span class="badge-text">${t('priority')}: Internal</span>`;
+
+            // Production Apps
+            updateSourceCard('production', language);
+
+            // Beta Apps
+            updateSourceCard('beta', language);
+
+            // Internal Apps
+            updateSourceCard('internal', language);
+
+            // Instructions
+            updateInstructions(language);
+
+            // Footer
+            updateFooter(language);
+        }
+
+        function updateSourceCard(environment, language) {
+            const prefix = `${environment}Apps`;
+
+            document.getElementById(`${prefix}Title`).textContent = t(`${prefix}.title`);
+            document.getElementById(`${prefix}Subtitle`).textContent = t(`${prefix}.subtitle`);
+            document.getElementById(`${prefix}Description`).textContent = t(`${prefix}.description`);
+            document.getElementById(`${prefix}Url`).textContent = `https://jrevillard.github.io/my-altstore/sources/${environment}.json`;
+            document.getElementById(`${prefix}Btn`).textContent = t(`${prefix}.button`);
+
+            // Update features
+            const featuresList = document.getElementById(`${prefix}Features`);
+            const features = t(`${prefix}.features`);
+            featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
+        }
+
+        function updateInstructions(language) {
+            document.getElementById('instructionsTitle').textContent = t('instructions.title');
+
+            const stepsList = document.getElementById('instructionsSteps');
+            const steps = t('instructions.steps');
+            stepsList.innerHTML = steps.map((step, index) =>
+                `<li data-step="${index + 1}">${step}</li>`
+            ).join('');
+
+            document.getElementById('instructionsNote').textContent = t('instructions.note');
+        }
+
+        function updateFooter(language) {
+            document.getElementById('footerPowered').textContent = t('footer.powered');
+            document.getElementById('footerAltStore').textContent = t('footer.altStore');
+            document.getElementById('footerManaged').textContent = t('footer.managed');
+            document.getElementById('footerTeam').textContent = t('footer.team');
+        }
+
+        function setupLanguageSwitching() {
+            const languageButtons = document.querySelectorAll('.language-btn');
+
+            languageButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const selectedLang = this.dataset.lang;
+
+                    // Update active state
+                    updateLanguageButtons(selectedLang);
+
+                    // Update all text content
+                    updateAllText(selectedLang);
+
+                    // Update page metadata
+                    updatePageMetadata(selectedLang);
+                });
+            });
+        }
+
+        function updatePageMetadata(language) {
+            // Update meta description and keywords
+            const metaDescription = document.querySelector('meta[name="description"]');
+            const metaKeywords = document.querySelector('meta[name="keywords"]');
+
+            if (metaDescription) {
+                metaDescription.content = t('meta.description');
+            }
+
+            if (metaKeywords) {
+                metaKeywords.content = t('meta.keywords');
+            }
+
+            // Update html lang attribute
+            document.documentElement.lang = language;
+        }
+    </script>
 </body>
 </html>
