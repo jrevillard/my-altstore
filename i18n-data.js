@@ -15,21 +15,21 @@ const i18n = {
 
         // Sections
         productionApps: {
-            title: "✅ Applications Officielles",
+            title: "Applications Officielles",
             subtitle: "Versions stables et approuvées",
             description: "Applications testées et validées pour usage en production. Versions stables et fiables.",
             features: ["Versions stables", "Support officiel", "Testées et validées", "Mises à jour contrôlées"],
             button: "Ajouter cette source"
         },
         betaApps: {
-            title: "🧪 Applications Bêta",
+            title: "Applications Bêta",
             subtitle: "Dernières fonctionnalités en test",
             description: "Versions expérimentales avec les dernières fonctionnalités. Instables mais innovantes.",
             features: ["Dernières fonctionnalités", "Versions expérimentales", "Feedback bienvenu", "Mises à jour fréquentes"],
             button: "Ajouter cette source"
         },
         internalApps: {
-            title: "👥 Applications Internes",
+            title: "Applications Internes",
             subtitle: "Accès complet à toutes les versions",
             description: "Ensemble complet pour l'équipe interne. Accès à toutes les versions et environnements de développement.",
             features: ["Accès complet", "Versions de développement", "Environnements de test", "Builds expérimentaux"],
@@ -77,21 +77,21 @@ const i18n = {
 
         // Sections
         productionApps: {
-            title: "✅ Official Applications",
+            title: "Official Applications",
             subtitle: "Stable and approved versions",
             description: "Tested and validated applications for production use. Stable and reliable versions.",
             features: ["Stable versions", "Official support", "Tested and validated", "Controlled updates"],
             button: "Add this source"
         },
         betaApps: {
-            title: "🧪 Beta Applications",
+            title: "Beta Applications",
             subtitle: "Latest features in testing",
             description: "Experimental versions with the latest features. Unstable but innovative.",
             features: ["Latest features", "Experimental versions", "Feedback welcome", "Frequent updates"],
             button: "Add this source"
         },
         internalApps: {
-            title: "👥 Internal Applications",
+            title: "Internal Applications",
             subtitle: "Complete access to all versions",
             description: "Complete collection for the internal team. Access to all versions and development environments.",
             features: ["Complete access", "Development versions", "Test environments", "Experimental builds"],
