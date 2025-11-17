@@ -544,7 +544,20 @@
         <!-- Header -->
         <div class="header">
             <h1 id="title">Applications Catalog</h1>
-            <p id="subtitle">Multi-Platform Mobile Applications</p>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3 id="instructionsTitle">🔧 How to Install</h3>
+            <ol id="instructionsSteps">
+                <li data-step="1" id="step1">Open AltStore PAL on your iPhone</li>
+                <li data-step="2" id="step2">Copy the URL of the desired source below</li>
+                <li data-step="3" id="step3">Add the source in AltStore PAL (Sources tab)</li>
+                <li data-step="4" id="step4">Install applications from the source</li>
+            </ol>
+            <p class="note" id="instructionsNote">
+                Applications require AltStore PAL (available on App Store in EU)
+            </p>
         </div>
 
         <!-- Section Header -->
@@ -553,7 +566,7 @@
             <p id="chooseSourceDesc">Different sources for different use cases</p>
         </div>
 
-        
+
         <!-- Sources Grid -->
         <div class="sources-grid" id="sourcesGrid">
             <!-- Production Apps -->
@@ -653,20 +666,6 @@
             </div>
         </div>
 
-        <!-- Instructions -->
-        <div class="instructions">
-            <h3 id="instructionsTitle">🔧 How to Install</h3>
-            <ol id="instructionsSteps">
-                <li data-step="1" id="step1">Open AltStore PAL on your iPhone</li>
-                <li data-step="2" id="step2">Copy the URL of the desired source below</li>
-                <li data-step="3" id="step3">Add the source in AltStore PAL (Sources tab)</li>
-                <li data-step="4" id="step4">Install applications from the source</li>
-            </ol>
-            <p class="note" id="instructionsNote">
-                Applications require AltStore PAL (available on App Store in EU)
-            </p>
-        </div>
-
         <!-- Footer -->
         <div class="footer">
             <p><span id="footerPowered">Powered by</span> <span id="footerAltStore">AltStore PAL</span></p>
@@ -735,7 +734,6 @@
 
             // Header
             safeSetText('title', t('title'));
-            safeSetText('subtitle', t('subtitle'));
 
             // Section header
             safeSetText('chooseSource', t('chooseSource'));
