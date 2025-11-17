@@ -53,11 +53,13 @@ const i18n = {
             powered: "Propulsé par",
             altStore: "AltStore PAL",
             managed: "Géré par l'équipe",
+            team: "l'équipe",
             appsCatalogue: "Catalogue d'Applications Multi-Platforms"
         },
 
         // SEO
         meta: {
+            title: "Catalogue d'Applications - AltStore PAL",
             description: "Catalogue d'applications mobiles pour AltStore PAL. Installez facilement EduLift et d'autres applications multi-plateformes.",
             keywords: "AltStore PAL, applications mobiles, iOS, EduLift, catalogue apps"
         }
@@ -116,11 +118,13 @@ const i18n = {
             powered: "Powered by",
             altStore: "AltStore PAL",
             managed: "Managed by the team",
+            team: "the team",
             appsCatalogue: "Multi-Platform Applications Catalog"
         },
 
         // SEO
         meta: {
+            title: "Applications Catalog - AltStore PAL",
             description: "Mobile applications catalog for AltStore PAL. Easily install EduLift and other multi-platform applications.",
             keywords: "AltStore PAL, mobile applications, iOS, EduLift, apps catalog"
         }

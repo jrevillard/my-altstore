@@ -742,21 +742,40 @@
         }
 
         function updateAllText(language) {
+            // Helper function to safely update element text and HTML
+            const safeSetText = (elementId, text) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = text;
+                } else {
+                    console.warn(`Element with id "${elementId}" not found`);
+                }
+            };
+
+            const safeSetHTML = (elementId, html) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerHTML = html;
+                } else {
+                    console.warn(`Element with id "${elementId}" not found`);
+                }
+            };
+
             // Update page title and meta
             document.title = t('meta.title');
 
             // Header
-            document.getElementById('title').textContent = t('title');
-            document.getElementById('subtitle').textContent = t('subtitle');
+            safeSetText('title', t('title'));
+            safeSetText('subtitle', t('subtitle'));
 
             // Section header
-            document.getElementById('chooseSource').textContent = t('chooseSource');
-            document.getElementById('chooseSourceDesc').textContent = t('chooseSourceDesc');
+            safeSetText('chooseSource', t('chooseSource'));
+            safeSetText('chooseSourceDesc', t('chooseSourceDesc'));
 
             // Priority badges
-            document.getElementById('priorityRecommended').innerHTML = `<span class="badge-text">${t('recommended')}</span>`;
-            document.getElementById('priorityBeta').innerHTML = `<span class="badge-text">${t('priority')}: Testing</span>`;
-            document.getElementById('priorityInternal').innerHTML = `<span class="badge-text">${t('priority')}: Internal</span>`;
+            safeSetHTML('priorityRecommended', `<span class="badge-text">${t('recommended')}</span>`);
+            safeSetHTML('priorityBeta', `<span class="badge-text">${t('priority')}: Testing</span>`);
+            safeSetHTML('priorityInternal', `<span class="badge-text">${t('priority')}: Internal</span>`);
 
             // Production Apps
             updateSourceCard('production', language);
@@ -775,37 +794,74 @@
         }
 
         function updateSourceCard(environment, language) {
-            const prefix = `${environment}Apps`;
+            const prefix = `${environment}`;
 
-            document.getElementById(`${prefix}Title`).textContent = t(`${prefix}.title`);
-            document.getElementById(`${prefix}Subtitle`).textContent = t(`${prefix}.subtitle`);
-            document.getElementById(`${prefix}Description`).textContent = t(`${prefix}.description`);
-            document.getElementById(`${prefix}Url`).textContent = `https://jrevillard.github.io/my-altstore/sources/${environment}.json`;
-            document.getElementById(`${prefix}Btn`).textContent = t(`${prefix}.button`);
+            // Helper function to safely update element text
+            const safeSetText = (elementId, text) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = text;
+                } else {
+                    console.warn(`Element with id "${elementId}" not found`);
+                }
+            };
+
+            // Update text content safely
+            safeSetText(`${prefix}Title`, t(`${prefix}Apps.title`));
+            safeSetText(`${prefix}Subtitle`, t(`${prefix}Apps.subtitle`));
+            safeSetText(`${prefix}Description`, t(`${prefix}Apps.description`));
+            safeSetText(`${prefix}Url`, `https://jrevillard.github.io/my-altstore/sources/${environment}.json`);
+            safeSetText(`${prefix}Btn`, t(`${prefix}Apps.button`));
 
             // Update features
             const featuresList = document.getElementById(`${prefix}Features`);
-            const features = t(`${prefix}.features`);
-            featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
+            if (featuresList) {
+                const features = t(`${prefix}Apps.features`);
+                featuresList.innerHTML = features.map(feature => `<li>${feature}</li>`).join('');
+            } else {
+                console.warn(`Features list with id "${prefix}Features" not found`);
+            }
         }
 
         function updateInstructions(language) {
-            document.getElementById('instructionsTitle').textContent = t('instructions.title');
+            const safeSetText = (elementId, text) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = text;
+                } else {
+                    console.warn(`Element with id "${elementId}" not found`);
+                }
+            };
+
+            safeSetText('instructionsTitle', t('instructions.title'));
 
             const stepsList = document.getElementById('instructionsSteps');
-            const steps = t('instructions.steps');
-            stepsList.innerHTML = steps.map((step, index) =>
-                `<li data-step="${index + 1}">${step}</li>`
-            ).join('');
+            if (stepsList) {
+                const steps = t('instructions.steps');
+                stepsList.innerHTML = steps.map((step, index) =>
+                    `<li data-step="${index + 1}">${step}</li>`
+                ).join('');
+            } else {
+                console.warn('Instructions steps list not found');
+            }
 
-            document.getElementById('instructionsNote').textContent = t('instructions.note');
+            safeSetText('instructionsNote', t('instructions.note'));
         }
 
         function updateFooter(language) {
-            document.getElementById('footerPowered').textContent = t('footer.powered');
-            document.getElementById('footerAltStore').textContent = t('footer.altStore');
-            document.getElementById('footerManaged').textContent = t('footer.managed');
-            document.getElementById('footerTeam').textContent = t('footer.team');
+            const safeSetText = (elementId, text) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = text;
+                } else {
+                    console.warn(`Element with id "${elementId}" not found`);
+                }
+            };
+
+            safeSetText('footerPowered', t('footer.powered'));
+            safeSetText('footerAltStore', t('footer.altStore'));
+            safeSetText('footerManaged', t('footer.managed'));
+            safeSetText('footerTeam', t('footer.team'));
         }
 
         function setupLanguageSwitching() {
