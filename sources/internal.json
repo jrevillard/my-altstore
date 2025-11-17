@@ -1,0 +1,18 @@
+{
+  "name": "Applications Internes",
+  "identifier": "com.jrevillard.internal.source",
+  "apps": [
+    "https://jrevillard.github.io/my-altstore/apps/edulift-staging.json",
+    "https://jrevillard.github.io/my-altstore/apps/edulift-production.json"
+  ],
+  "news": [
+    {
+      "title": "Source interne pour l'équipe",
+      "identifier": "news-internal-setup",
+      "caption": "Accès à toutes les versions d'applications pour l'équipe de développement et les testeurs internes.",
+      "date": "2025-01-17T12:00:00Z"
+    }
+  ],
+  "headerImage": "https://jrevillard.github.io/my-altstore/banners/internal-header.png",
+  "description": "Ensemble complet des applications pour l'équipe interne. Accès à toutes les versions de développement et production."
+}

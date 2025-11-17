@@ -1,0 +1,16 @@
+{
+  "name": "EduLift",
+  "bundleIdentifier": "com.edulift.app",
+  "developerName": "EduLift Team",
+  "version": "__VERSION__",
+  "versionDate": "__DATE__",
+  "versionDescription": "__CHANGELOG__",
+  "downloadURL": "__FIREBASE_URL__",
+  "localizedDescription": "EduLift - Gestion du transport scolaire",
+  "iconURL": "https://jrevillard.github.io/my-altstore/icons/edulift.png",
+  "tintColor": "#2E86C1",
+  "size": __SIZE__,
+  "category": "education",
+  "tags": ["production", "stable", "transport"],
+  "subtitle": "Version officielle"
+}

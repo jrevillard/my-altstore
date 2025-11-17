@@ -1,0 +1,16 @@
+{
+  "name": "EduLift",
+  "bundleIdentifier": "com.edulift.app.staging",
+  "developerName": "EduLift Team",
+  "version": "__VERSION__",
+  "versionDate": "__DATE__",
+  "versionDescription": "__CHANGELOG__",
+  "downloadURL": "__FIREBASE_URL__",
+  "localizedDescription": "EduLift - Gestion du transport scolaire (version bêta)",
+  "iconURL": "https://jrevillard.github.io/my-altstore/icons/edulift-beta.png",
+  "tintColor": "#FF9500",
+  "size": __SIZE__,
+  "category": "education",
+  "tags": ["staging", "beta", "testing", "transport"],
+  "subtitle": "Version de test"
+}

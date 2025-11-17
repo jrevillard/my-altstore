@@ -1,0 +1,17 @@
+{
+  "name": "Applications Bêta",
+  "identifier": "com.jrevillard.beta.source",
+  "apps": [
+    "https://jrevillard.github.io/my-altstore/apps/edulift-staging.json"
+  ],
+  "news": [
+    {
+      "title": "Nouvelles versions bêta disponibles",
+      "identifier": "news-beta-welcome",
+      "caption": "Bienvenue sur la source bêta ! Testez les dernières fonctionnalités avant leur sortie officielle.",
+      "date": "2025-01-17T12:00:00Z"
+    }
+  ],
+  "headerImage": "https://jrevillard.github.io/my-altstore/banners/beta-header.png",
+  "description": "Applications en cours de développement et testing. Versions instables mais dernières fonctionnalités."
+}

@@ -3,62 +3,74 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>EduLift AltStore PAL Source</title>
-    <meta http-equiv="refresh" content="2; url=altstore.json">
+    <title>AltStore PAL - Applications Mobiles</title>
+    <meta http-equiv="refresh" content="3; url=catalogue.html">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            color: white;
+            padding: 20px;
         }
         .icon {
-            font-size: 48px;
+            font-size: 5rem;
             margin-bottom: 20px;
+            animation: bounce 2s infinite;
         }
         h1 {
-            color: #2E86C1;
+            font-size: 2.5rem;
             margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
         }
         .redirect-info {
-            background: #e8f4f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
-        a {
-            color: #2E86C1;
+        .catalogue-link {
+            color: #4ade80;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
         }
-        a:hover {
+        .catalogue-link:hover {
             text-decoration: underline;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="icon">📱</div>
-        <h1>EduLift AltStore PAL Source</h1>
-        <p><strong>Source AltStore PAL pour EduLift</strong></p>
+        <h1>AltStore PAL</h1>
+        <p>Applications Mobiles Multi-Platforms</p>
 
         <div class="redirect-info">
-            <p>🔄 Redirection vers la source AltStore...</p>
-            <p><a href="altstore.json">Cliquez ici si la redirection ne fonctionne pas</a></p>
+            <p>🔄 Redirection vers le catalogue...</p>
+            <p>
+                <a href="catalogue.html" class="catalogue-link">
+                    Accéder au catalogue directement →
+                </a>
+            </p>
         </div>
-
-        <p style="font-size: 14px; color: #666; margin-top: 30px;">
-            Pour les développeurs : Cette page sert de source AltStore PAL<br>
-            pour les builds de test de l'application EduLift.
-        </p>
     </div>
 </body>
 </html>

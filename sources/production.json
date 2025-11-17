@@ -1,0 +1,17 @@
+{
+  "name": "Applications Officielles",
+  "identifier": "com.jrevillard.production.source",
+  "apps": [
+    "https://jrevillard.github.io/my-altstore/apps/edulift-production.json"
+  ],
+  "news": [
+    {
+      "title": "EduLift disponible",
+      "identifier": "news-edulift-available",
+      "caption": "Version officielle stable d'EduLift pour la gestion du transport scolaire.",
+      "date": "2025-01-17T10:00:00Z"
+    }
+  ],
+  "headerImage": "https://jrevillard.github.io/my-altstore/banners/production-header.png",
+  "description": "Applications stables et officielles. Versions testées et approuvées pour usage production."
+}
