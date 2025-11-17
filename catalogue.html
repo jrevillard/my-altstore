@@ -545,10 +545,6 @@
         <div class="header">
             <h1 id="title">Applications Catalog</h1>
             <p id="subtitle">Multi-Platform Mobile Applications</p>
-            <div class="language-selector" id="languageSelector">
-                <button class="language-btn active" data-lang="fr">Français</button>
-                <button class="language-btn" data-lang="en">English</button>
-            </div>
         </div>
 
         <!-- Section Header -->
@@ -557,26 +553,11 @@
             <p id="chooseSourceDesc">Different sources for different use cases</p>
         </div>
 
-        <!-- Priority Badges -->
-        <div class="priority-badges" id="priorityBadges">
-            <div class="priority-badge recommended" data-priority="high" id="priorityRecommended">
-                <span class="badge-text">Recommended</span>
-            </div>
-            <div class="priority-badge" data-priority="medium" id="priorityBeta">
-                <span class="badge-text">Testing</span>
-            </div>
-            <div class="priority-badge" data-priority="low" id="priorityInternal">
-                <span class="badge-text">Internal</span>
-            </div>
-        </div>
-
+        
         <!-- Sources Grid -->
         <div class="sources-grid" id="sourcesGrid">
             <!-- Production Apps -->
             <div class="source-card production" data-environment="production">
-                <div class="priority-indicator">
-                    <span class="badge-text" id="priorityProduction">Recommended</span>
-                </div>
                 <div class="source-header">
                     <div class="source-icon">✅</div>
                     <div class="source-title-section">
@@ -609,10 +590,7 @@
 
             <!-- Beta Apps -->
             <div class="source-card beta" data-environment="beta">
-                <div class="priority-indicator">
-                    <span class="badge-text" id="priorityBetaText">Testing</span>
-                </div>
-                <div class="source-header">
+                                <div class="source-header">
                     <div class="source-icon">🧪</div>
                     <div class="source-title-section">
                         <h3 class="source-title" id="betaTitle">Beta Applications</h3>
@@ -644,9 +622,6 @@
 
             <!-- Internal Apps -->
             <div class="source-card internal" data-environment="internal">
-                <div class="priority-indicator">
-                    <span class="badge-text" id="priorityInternalText">Internal</span>
-                </div>
                 <div class="source-header">
                     <div class="source-icon">👥</div>
                     <div class="source-title-section">
@@ -695,7 +670,6 @@
         <!-- Footer -->
         <div class="footer">
             <p><span id="footerPowered">Powered by</span> <span id="footerAltStore">AltStore PAL</span></p>
-            <p><span id="footerManaged">Managed by</span> <span id="footerTeam">the team</span></p>
         </div>
     </div>
 
@@ -709,15 +683,10 @@
         function initializeCatalogue() {
             // Set language from browser or default
             const language = getBrowserLanguage();
-
-            // Update language selector buttons
-            updateLanguageButtons(language);
+            console.log('Detected language:', language);
 
             // Update all text content
             updateAllText(language);
-
-            // Set up language switching
-            setupLanguageSwitching();
 
             // Hide loading and show content
             document.getElementById('loading').style.display = 'none';
@@ -860,29 +829,9 @@
 
             safeSetText('footerPowered', t('footer.powered'));
             safeSetText('footerAltStore', t('footer.altStore'));
-            safeSetText('footerManaged', t('footer.managed'));
-            safeSetText('footerTeam', t('footer.team'));
         }
 
-        function setupLanguageSwitching() {
-            const languageButtons = document.querySelectorAll('.language-btn');
-
-            languageButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const selectedLang = this.dataset.lang;
-
-                    // Update active state
-                    updateLanguageButtons(selectedLang);
-
-                    // Update all text content
-                    updateAllText(selectedLang);
-
-                    // Update page metadata
-                    updatePageMetadata(selectedLang);
-                });
-            });
-        }
-
+        
         function updatePageMetadata(language) {
             // Update meta description and keywords
             const metaDescription = document.querySelector('meta[name="description"]');

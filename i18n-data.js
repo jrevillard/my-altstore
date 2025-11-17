@@ -51,10 +51,7 @@ const i18n = {
         // Footer
         footer: {
             powered: "Propulsé par",
-            altStore: "AltStore PAL",
-            managed: "Géré par l'équipe",
-            team: "l'équipe",
-            appsCatalogue: "Catalogue d'Applications Multi-Platforms"
+            altStore: "AltStore PAL"
         },
 
         // SEO
@@ -116,10 +113,7 @@ const i18n = {
         // Footer
         footer: {
             powered: "Powered by",
-            altStore: "AltStore PAL",
-            managed: "Managed by the team",
-            team: "the team",
-            appsCatalogue: "Multi-Platform Applications Catalog"
+            altStore: "AltStore PAL"
         },
 
         // SEO
