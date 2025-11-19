@@ -6,6 +6,12 @@
   ],
   "news": [
     {
+      "title": "Update staging (3.38.2)",
+      "identifier": "news-staging-3.38.2-1763566243",
+      "caption": "New version https://appdistribution.firebase.google.com/1:390712570284:ios:11ab124204e6c10c054a09 available.",
+      "date": "2025-11-19T15:30:43Z"
+    },
+    {
       "title": "Nouvelles versions bêta disponibles",
       "identifier": "news-beta-welcome",
       "caption": "Bienvenue sur la source bêta ! Testez les dernières fonctionnalités avant leur sortie officielle.",
