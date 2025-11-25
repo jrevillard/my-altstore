@@ -5,7 +5,7 @@
   "version": "__VERSION__",
   "versionDate": "__DATE__",
   "versionDescription": "__CHANGELOG__",
-  "downloadURL": "__FIREBASE_URL__",
+  "downloadURL": "__IPA_URL__",
   "localizedDescription": "EduLift - Gestion du transport scolaire (version bêta)",
   "iconURL": "https://jrevillard.github.io/my-altstore/icons/edulift-beta.png",
   "tintColor": "#FF9500",

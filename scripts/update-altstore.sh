@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # AltStore PAL update script for flexible multi-applications architecture
-# Usage: ./update-altstore.sh <app_name> <environment> <firebase_url> <version> <ipa_size>
+# Usage: ./update-altstore.sh <app_name> <environment> <ipa_url> <version> <ipa_size>
 
 set -e
 
 # Parameters
 APP_NAME=${1:-"edulift"}
 ENVIRONMENT=${2:-"staging"}  # staging, production, internal, beta, etc.
-FIREBASE_URL=${3:-"__FIREBASE_URL__"}
+IPA_URL=${3:-"__IPA_URL__"}
 VERSION=${4:-"__VERSION__"}
 IPA_SIZE=${5:-"__SIZE__"}
 
@@ -20,7 +20,7 @@ SOURCES_DIR="$REPO_ROOT/sources"
 echo "🚀 Updating AltStore PAL for $APP_NAME-$ENVIRONMENT"
 echo "   Version: $VERSION"
 echo "   Size: $IPA_SIZE bytes"
-echo "   Firebase URL: $FIREBASE_URL"
+echo "   Ipa URL: $IPA_URL"
 
 # Functions
 update_app_json() {
@@ -37,7 +37,7 @@ update_app_json() {
   "version": "$VERSION",
   "versionDate": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
   "versionDescription": "$(get_changelog $APP_NAME $ENVIRONMENT $VERSION)",
-  "downloadURL": "$FIREBASE_URL",
+  "downloadURL": "$IPA_URL",
   "localizedDescription": "$(get_description $APP_NAME $ENVIRONMENT)",
   "iconURL": "https://jrevillard.github.io/my-altstore/icons/${APP_NAME}-${ENVIRONMENT}.png",
   "tintColor": "$(get_tint_color $ENVIRONMENT)",
@@ -209,9 +209,9 @@ EOF
 # Main execution
 main() {
     # Check parameters
-    if [[ -z "$APP_NAME" || -z "$ENVIRONMENT" || -z "$FIREBASE_URL" ]]; then
+    if [[ -z "$APP_NAME" || -z "$ENVIRONMENT" || -z "$IPA_URL" ]]; then
         echo "❌ Missing parameters"
-        echo "Usage: $0 <app_name> <environment> <firebase_url> [version] [ipa_size]"
+        echo "Usage: $0 <app_name> <environment> <ipa_url> [version] [ipa_size]"
         exit 1
     fi
 
