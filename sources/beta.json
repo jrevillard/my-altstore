@@ -6,6 +6,12 @@
   ],
   "news": [
     {
+      "title": "Update edulift (staging)",
+      "identifier": "news-edulift-staging-1764057574",
+      "caption": "New version 0.1.0-alpha11 available.",
+      "date": "2025-11-25T07:59:34Z"
+    },
+    {
       "title": "Nouvelles versions bêta disponibles",
       "identifier": "news-beta-welcome",
       "caption": "Bienvenue sur la source bêta ! Testez les dernières fonctionnalités avant leur sortie officielle.",

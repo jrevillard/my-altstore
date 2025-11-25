@@ -7,6 +7,12 @@
   ],
   "news": [
     {
+      "title": "Update edulift (staging)",
+      "identifier": "news-edulift-staging-1764057574",
+      "caption": "New version 0.1.0-alpha11 available.",
+      "date": "2025-11-25T07:59:34Z"
+    },
+    {
       "title": "Source interne pour l'équipe",
       "identifier": "news-internal-setup",
       "caption": "Accès à toutes les versions d'applications pour l'équipe de développement et les testeurs internes.",
