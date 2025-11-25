@@ -7,6 +7,12 @@
   "news": [
     {
       "title": "Update edulift (staging)",
+      "identifier": "news-edulift-staging-1764094246",
+      "caption": "New version 0.1.0-beta3 available.",
+      "date": "2025-11-25T18:10:46Z"
+    },
+    {
+      "title": "Update edulift (staging)",
       "identifier": "news-edulift-staging-1764089998",
       "caption": "New version 0.1.0-beta2 available.",
       "date": "2025-11-25T16:59:58Z"
