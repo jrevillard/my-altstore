@@ -6,6 +6,12 @@
   ],
   "news": [
     {
+      "title": "Update edulift (production)",
+      "identifier": "news-edulift-production-1764674442",
+      "caption": "New version 0.1.0 available.",
+      "date": "2025-12-02T11:20:42Z"
+    },
+    {
       "title": "EduLift disponible",
       "identifier": "news-edulift-available",
       "caption": "Version officielle stable d'EduLift pour la gestion du transport scolaire.",
